@@ -18,31 +18,52 @@
             <div class="hero-head"></div>
 
             <!-- Super sweet Hero body title -->
-            <div class="hero-body">
-                <div class="container has-text-centered">
+            <div class="hero-body"
+              {{ if .Params.BackgroundImage }}
+                {{ with $home.Resources.GetMatch .Params.BackgroundImage }}
+                style="
+                min-height: 100vh;
+                object-fit: cover;
+                background: url('{{ .Permalink }}');
+                background-size: cover;
+                background-position: 50%;
+                "
+                {{ end }}
+              {{ end }}
+                >
+            <div class="container has-text-centered"
+                 style="
+                 width: 240px;
+                 position: absolute;
+                 top: 50%;
+                 left: 50%;
+                 transform: translateY(-50%) translateX(-50%);
+                 -webkit- transform: translateY(-50%) translateX(-50%);
+                 margin: auto;
+              ">
                     <!-- Title and tagline -->
                     <h1 class="bold-title {{ if or (.Site.Params.fadeIn | default true) .Site.Params.fadeInIndex }}fade-in one{{ end }}">
                     {{ if .Params.Image }}
                       {{ with $home.Resources.GetMatch .Params.Image }}
-                      {{ with .Resize "320x" }}
+                      {{ with .Resize "240x" }}
                         <img class="img-responsive avatar" style="border-radius: 500px" src="{{ .Permalink }}" alt="{{ .Name }}">
                       {{ end }}
                       {{ end }}
                     {{ end }}
                     </h1>
-                    <h1 class="bold-title-tockn {{ if or (.Site.Params.fadeIn | default true) .Site.Params.fadeInIndex }}fade-in one{{ end }}">
+                    <h1 class="bold-title-tockn {{ if or (.Site.Params.fadeIn | default true) .Site.Params.fadeInIndex }}fade-in one{{ end }}" style="color: white; font-weight: bold;">
                     {{ .Title }}
                     </h1>
-                    <div class="subtitle-tockn is-3 {{ if or (.Site.Params.fadeIn | default true) .Site.Params.fadeInIndex }}fade-in two{{ end }}">
+                    <div class="subtitle-tockn is-3 {{ if or (.Site.Params.fadeIn | default true) .Site.Params.fadeInIndex }}fade-in two{{ end }}" style="color: white">
                         {{ .Content }}
                     </div>
                     <!-- End title and tagline -->
                     <!-- Some social icons -->
-                    <div class="{{ if or (.Site.Params.fadeIn | default true) .Site.Params.fadeInIndex }}fade-in three{{ end }}">
+                    <div class="{{ if or (.Site.Params.fadeIn | default true) .Site.Params.fadeInIndex }}fade-in two{{ end }}">
                         {{ partial "home/social.html" . }}
                     </div>
                     <!-- End top social icons -->
-                </div>
+              </div>
             </div> <!-- End of Hero body -->
             {{ end }}
 

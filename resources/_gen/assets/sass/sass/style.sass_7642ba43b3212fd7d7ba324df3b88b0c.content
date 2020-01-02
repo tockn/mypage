@@ -7079,13 +7079,13 @@ html.modal-open {
   opacity: 0;
   animation: fadeIn ease-in 1;
   animation-fill-mode: forwards;
-  animation-duration: 1s; }
+  animation-duration: 0.5s; }
   .fade-in.one {
-    animation-delay: 0.7s; }
+    animation-delay: 0.1s; }
   .fade-in.two {
-    animation-delay: 1.4s; }
+    animation-delay: 0.3s; }
   .fade-in.three {
-    animation-delay: 1.8s; }
+    animation-delay: 0.5s; }
 
 a {
   color: #00b8d4; }
